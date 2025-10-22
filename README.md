@@ -1,4 +1,3 @@
-
 # Financial Sentiment Analysis using FinBERT
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
@@ -173,6 +172,12 @@ Negative        1199       136        13
 Neutral          113      1148        87
 Positive          11       145      1193
 ```
+
+#### Per-Class Accuracy
+
+- **Negative class accuracy**: 88.95%
+- **Neutral class accuracy**: 85.16%
+- **Positive class accuracy**: 88.44%
 
 ## Model Inference
 
