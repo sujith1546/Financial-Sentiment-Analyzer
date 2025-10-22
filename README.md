@@ -59,43 +59,43 @@ The implementation includes:
 ## Installation
 
 1. Clone this repository:
-bash
+```bash
 git clone https://github.com/yourusername/financial-sentiment-analysis.git
 cd financial-sentiment-analysis
-
+```
 
 2. Install the required packages:
-bash
+```bash
 pip install -r requirements.txt
-
+```
 
 Or install directly:
-bash
+```bash
 pip install datasets transformers torch pandas numpy scikit-learn matplotlib seaborn accelerate
-
+```
 
 ## Project Structure
 
-
+```
 financial-sentiment-analysis/
 ├── finbert_sentiment_analysis.py    # Main implementation script
 ├── requirements.txt                 # Package dependencies
 ├── README.md                        # This file
 ├── finbert_indian_finance/          # Fine-tuned model (after training)
 └── results/                         # Training outputs and logs
-
+```
 
 ## Usage
 
 ### 1. Run the complete training and evaluation pipeline:
 
-bash
+```bash
 python finbert_sentiment_analysis.py
-
+```
 
 ### 2. Using the trained model for inference:
 
-python
+```python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
@@ -112,22 +112,22 @@ def predict_sentiment(text):
         max_length=512
     )
     
-with torch.no_grad():
-outputs = model(**inputs)
-predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
+    with torch.no_grad():
+        outputs = model(**inputs)
+        predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
     
-predicted_class = torch.argmax(predictions, dim=-1).item()
-confidence = predictions[0][predicted_class].item()
+    predicted_class = torch.argmax(predictions, dim=-1).item()
+    confidence = predictions[0][predicted_class].item()
     
-return {
-    'sentiment': ['negative', 'neutral', 'positive'][predicted_class],
-    'confidence': confidence
-}
+    return {
+        'sentiment': ['negative', 'neutral', 'positive'][predicted_class],
+        'confidence': confidence
+    }
 
 text = "The company reported record profits in the last quarter."
 result = predict_sentiment(text)
 print(f"Sentiment: {result['sentiment']}, Confidence: {result['confidence']:.2f}")
-
+```
 
 ## Results
 
@@ -169,9 +169,9 @@ The confusion matrix shows the model's performance across all classes:
               Predicted
               Negative  Neutral  Positive
 Actual
-Negative        XXX       XXX      XXX
-Neutral         XXX       XXX      XXX
-Positive        XXX       XXX      XXX
+Negative        1199       136        13
+Neutral          113      1148        87
+Positive          11       145      1193
 ```
 
 ## Model Inference
@@ -218,4 +218,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ⭐ If this project helped you, please consider giving it a star!
-```
