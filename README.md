@@ -1,8 +1,4 @@
 
-
-Of course. Here is the README.md content with all comments removed from the code blocks, presented in a format you can directly copy and paste.
-
-```markdown
 # Financial Sentiment Analysis using FinBERT
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
@@ -63,43 +59,43 @@ The implementation includes:
 ## Installation
 
 1. Clone this repository:
-```bash
+bash
 git clone https://github.com/yourusername/financial-sentiment-analysis.git
 cd financial-sentiment-analysis
-```
+
 
 2. Install the required packages:
-```bash
+bash
 pip install -r requirements.txt
-```
+
 
 Or install directly:
-```bash
+bash
 pip install datasets transformers torch pandas numpy scikit-learn matplotlib seaborn accelerate
-```
+
 
 ## Project Structure
 
-```
+
 financial-sentiment-analysis/
 ├── finbert_sentiment_analysis.py    # Main implementation script
 ├── requirements.txt                 # Package dependencies
 ├── README.md                        # This file
 ├── finbert_indian_finance/          # Fine-tuned model (after training)
 └── results/                         # Training outputs and logs
-```
+
 
 ## Usage
 
 ### 1. Run the complete training and evaluation pipeline:
 
-```bash
+bash
 python finbert_sentiment_analysis.py
-```
+
 
 ### 2. Using the trained model for inference:
 
-```python
+python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
@@ -116,22 +112,22 @@ def predict_sentiment(text):
         max_length=512
     )
     
-    with torch.no_grad():
-        outputs = model(**inputs)
-        predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
+with torch.no_grad():
+outputs = model(**inputs)
+predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
     
-    predicted_class = torch.argmax(predictions, dim=-1).item()
-    confidence = predictions[0][predicted_class].item()
+predicted_class = torch.argmax(predictions, dim=-1).item()
+confidence = predictions[0][predicted_class].item()
     
-    return {
-        'sentiment': ['negative', 'neutral', 'positive'][predicted_class],
-        'confidence': confidence
-    }
+return {
+    'sentiment': ['negative', 'neutral', 'positive'][predicted_class],
+    'confidence': confidence
+}
 
 text = "The company reported record profits in the last quarter."
 result = predict_sentiment(text)
 print(f"Sentiment: {result['sentiment']}, Confidence: {result['confidence']:.2f}")
-```
+
 
 ## Results
 
