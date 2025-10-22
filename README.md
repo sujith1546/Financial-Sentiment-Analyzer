@@ -1,3 +1,8 @@
+
+
+Of course. Here is the README.md content with all comments removed from the code blocks, presented in a format you can directly copy and paste.
+
+```markdown
 # Financial Sentiment Analysis using FinBERT
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
@@ -98,12 +103,10 @@ python finbert_sentiment_analysis.py
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
-# Load the fine-tuned model
 model_path = './finbert_indian_finance'
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
 
-# Define the inference function
 def predict_sentiment(text):
     inputs = tokenizer(
         text,
@@ -125,7 +128,6 @@ def predict_sentiment(text):
         'confidence': confidence
     }
 
-# Make predictions
 text = "The company reported record profits in the last quarter."
 result = predict_sentiment(text)
 print(f"Sentiment: {result['sentiment']}, Confidence: {result['confidence']:.2f}")
@@ -135,18 +137,33 @@ print(f"Sentiment: {result['sentiment']}, Confidence: {result['confidence']:.2f}
 
 After fine-tuning FinBERT on the Indian Financial News dataset, the model achieves the following performance metrics:
 
-- **Test Accuracy**: ~85-90%
-- **Precision**: ~85-90%
-- **Recall**: ~85-90%
-- **F1-Score**: ~85-90%
+📊 **FINAL MODEL PERFORMANCE METRICS**
+
+- **Dataset**: Indian Financial News (26,000+ articles)
+- **Model**: FinBERT (Fine-tuned)
+- **Training Samples**: 18,872
+- **Validation Samples**: 4,044
+- **Test Samples**: 4,045
+- **Training Time**: 0:32:16.427674
+
+🎯 **Test Set Results:**
+- **Accuracy**: 87.52%
+- **Precision**: 87.74%
+- **Recall**: 87.52%
+- **F1-Score**: 87.59%
+
+📈 **Per-Class Performance:**
+- **Negative**: Precision=90.63%, Recall=88.95%, F1=89.78%
+- **Neutral**: Precision=80.34%, Recall=85.16%, F1=82.68%
+- **Positive**: Precision=92.27%, Recall=88.44%, F1=90.31%
 
 ### Performance by Class
 
 | Sentiment | Precision | Recall | F1-Score |
 |-----------|-----------|--------|----------|
-| Negative  | ~85%      | ~85%   | ~85%     |
-| Neutral   | ~85%      | ~85%   | ~85%     |
-| Positive  | ~85%      | ~85%   | ~85%     |
+| Negative  | 90.63%    | 88.95% | 89.78%   |
+| Neutral   | 80.34%    | 85.16% | 82.68%   |
+| Positive  | 92.27%    | 88.44% | 90.31%   |
 
 ### Confusion Matrix
 
@@ -166,7 +183,6 @@ Positive        XXX       XXX      XXX
 After training, you can use the `predict_sentiment()` function to analyze new financial text:
 
 ```python
-# Example usage
 text = "The company reported record profits in the last quarter."
 result = predict_sentiment(text)
 
@@ -206,3 +222,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ⭐ If this project helped you, please consider giving it a star!
+```
